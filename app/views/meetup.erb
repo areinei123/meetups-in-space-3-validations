@@ -1,0 +1,31 @@
+<h1><%= meetup.name %></h1>
+
+<dl>
+  <dt>Location:</dt>
+  <dd><%= meetup.location %></dd>
+  <dt>Description:</dt>
+  <dd><%= meetup.description %></dd>
+  <% if meetup.time %>
+    <dt>Time of Event:</dt>
+    <dd><%= meetup.time %></dd>
+  <% end %>
+</dl>
+<% if join_confirmation %>
+  <p><%= join_confirmation %> </p>
+<% end %>
+<h4>
+  Join this group!
+  <form action="/meetups/<%=meetup.id%>" method="POST">
+    <input type="hidden" name="meetup_id" value="">
+    <input type="submit" value="Join">
+  </form>
+</h4>
+
+<h4>Group Members</h4>
+<% meetup.users.each do |user| %>
+  <li><%= user.username %> - <%= user.provider%> (<%=user.email%>)</li>
+<% end %>
+
+
+
+<p><a href="/meetups">Back to all shows</a></p>

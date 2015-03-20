@@ -1,0 +1,12 @@
+<h1><%= @title %></h1>
+<% if confirmation %>
+<h3><%= confirmation %></h3>
+<% end %>
+<ul>
+  <% meetups.each do |meetup| %>
+    <li><a href='/meetups/<%=meetup.id%>'><%=meetup.name%></a> - Location: <%=meetup.location%>
+      Description: <%=meetup.description%></li>
+  <% end %>
+</ul>
+
+<h2><a href='/create_meetup'>Make a Meetup</a>
